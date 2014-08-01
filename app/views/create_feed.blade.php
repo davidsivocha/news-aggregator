@@ -7,8 +7,8 @@
     
     <body>
         <h1>Save a new Atom Feed to the Database</h1>
-        @if(Session::has('messages'))
-        <h2>{{Session::get('messages')}}</h2>
+        @if(Session::has('message'))
+        <h2>{{Session::get('message')}}</h2>
         @endif
         
         {{Form::open(array('url' => 'feeds/create', 'method' => 'post'))}}
