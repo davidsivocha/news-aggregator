@@ -2,11 +2,17 @@
 
 class FeedsController extends \BaseController {
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
+	public function getIndex(){
+    	$news_raw = Feeds::whereActive(1)->whereCategory('News')->get();
+        $esports_raw = Feeds::whereActive(1)->whereCategory('Esports')->get();
+        $technology_raw = Feeds::whereActive(1)->whereCategory('Technology')->get();
+        
+        return View::make('index')
+            	->with('news', $news_raw)
+            	->with('esports', $esports_raw)
+            	->with('technology', $technology_raw);
+    }
+    
 	public function getCreate(){
 		return View::make('create_feed');
 	}
